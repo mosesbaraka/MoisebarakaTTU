@@ -1,0 +1,23 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro  # Your homepage, replace 'intro' with the actual file if you have one
+
+chapters:
+  - file: lessons/laboratory1/laboratory1
+    title: "Fluid Properties"
+  - file: lessons/laboratory2/laboratory2
+    title: "Hydrostatic Forces and Buoyancy"
+  - file: lessons/laboratory3/laboratory3
+    title: "Flow Measurement"
+  - file: lessons/laboratory4/laboratory4
+    title: "Pipe Friction"
+  - file: lessons/laboratory5/laboratory5
+    title: "Fitting Minor Losses in Pipe Systems"
+  - file: lessons/laboratory6/laboratory6
+    title: "Momentum Transfer"
+  - file: lessons/laboratory7/laboratory7
+    title: "Pump Performance"
+  - file: lessons/laboratory8/laboratory8
+    title: "Open Channel Flow"
