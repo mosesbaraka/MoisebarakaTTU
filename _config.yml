@@ -1,0 +1,16 @@
+title: "CE 3105: Fluid Mechanics Lab Experiments"
+description: "Course materials for CE 3105: Fluid Mechanics Lab Experiments"
+theme: minima
+
+# Navigation links for GitHub Pages (optional)
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Lab 1: Fluid Properties"
+    url: "/content/lab1.html"
+  - title: "Lab 2: Flow Measurement"
+    url: "/content/lab2.html"
+  - title: "Lab 3: Open Channel Flow"
+    url: "/content/lab3.html"
+  - title: "Resources"
+    url: "/resources"
