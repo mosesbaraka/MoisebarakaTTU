@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>REDISTRICTING - STATE OF WEST VIRGINIA &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Redistricting-program';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Jupyter Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory1/laboratory1.html">Fluid Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory2/laboratory2.html">Hydrostatic Forces and Buoyancy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory3/laboratory3.html">Flow Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory4/laboratory4.html">Pipe Friction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory5/laboratory5.html">Fitting Minor Losses in Pipe Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory6/laboratory6.html">Momentum Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory7/laboratory7.html">Pump Performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lessons/laboratory8/laboratory8.html">Open Channel Flow</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Redistricting-program.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>REDISTRICTING - STATE OF WEST VIRGINIA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">REDISTRICTING - STATE OF WEST VIRGINIA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-1-modeling-with-gurobipy">Type 1: Modeling with GUROBIPY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-2-modeling-with-pyscipopt">Type 2: Modeling with PySCIPopt</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="redistricting-state-of-west-virginia">
+<h1>REDISTRICTING - STATE OF WEST VIRGINIA<a class="headerlink" href="#redistricting-state-of-west-virginia" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>By Moise Baraka</strong><br />
+<em><a class="reference external" href="mailto:mbaraka&#37;&#52;&#48;ttu&#46;edu">mbaraka<span>&#64;</span>ttu<span>&#46;</span>edu</a></em><br />
+<em>A Project in Deterministic Operations Research</em><br />
+<em>IE 5318</em><br />
+<em>Class of Fall 2023</em><br />
+<em>Texas Tech University</em></p>
+<p><em>Submitted to</em><br />
+<strong>Hamidreza Validi, Ph.D.</strong></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;div.output_area pre{white-space: pre;}&lt;/style&gt;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>div.output_area pre{white-space: pre;}</style></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="type-1-modeling-with-gurobipy">
+<h1>Type 1: Modeling with GUROBIPY<a class="headerlink" href="#type-1-modeling-with-gurobipy" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import necessary libraries</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="n">GRB</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+
+<span class="kn">from</span> <span class="nn">gerrychain</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1">#                      READ THE DATA AND DISPLAY THE INFO</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1"># read a county graph from a JSON file.</span>
+<span class="k">def</span> <span class="nf">read_county_graph</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Graph</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Print information about counties (name, population, location)</span>
+<span class="k">def</span> <span class="nf">print_county_info</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;NAME20&#39;</span><span class="p">]</span>
+    <span class="n">population</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;P0010001&#39;</span><span class="p">]</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">population</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;INTPTLON20&#39;</span><span class="p">]</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;INTPTLAT20&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> County, which has population </span><span class="si">{</span><span class="n">population</span><span class="si">}</span><span class="s2"> and is centered at (</span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_X&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_Y&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># calculate population bounds</span>
+<span class="c1"># (based on a deviation parameter, total population, and the number of districts).</span>
+<span class="k">def</span> <span class="nf">calculate_population_bounds</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">deviation</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">total_population</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">deviation</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">total_population</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">deviation</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">total_population</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span>
+
+<span class="c1">#create a dictionary of distances between each pair of nodes </span>
+<span class="c1"># based on their geographical locations.</span>
+<span class="k">def</span> <span class="nf">create_distance_dict</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">{(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+            <span class="n">loc_i</span> <span class="o">=</span> <span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;C_Y&#39;</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;C_X&#39;</span><span class="p">])</span>
+            <span class="n">loc_j</span> <span class="o">=</span> <span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;C_Y&#39;</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;C_X&#39;</span><span class="p">])</span>
+            <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">geodesic</span><span class="p">(</span><span class="n">loc_i</span><span class="p">,</span> <span class="n">loc_j</span><span class="p">)</span><span class="o">.</span><span class="n">miles</span>
+    <span class="k">return</span> <span class="n">dist</span>
+
+<span class="c1"># Visualize the graph using networkx and matplotlib with enhanced styling</span>
+<span class="k">def</span> <span class="nf">visualize_graph</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_X&#39;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;C_Y&#39;</span><span class="p">]))</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
+    
+    <span class="c1"># Set node colors based on degree (you can customize this)</span>
+    <span class="n">node_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+    
+    <span class="c1"># Set node size based on total population (you can customize this as well)</span>
+    <span class="n">node_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">]</span>
+    
+    <span class="c1"># Draw nodes with enhanced styling</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="c1"># Draw edges with reduced opacity</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+    <span class="c1"># Add a colorbar for node colors</span>
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">node_colors</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">node_colors</span><span class="p">)))</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span> 
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Node Degree&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;County Graph Visualization&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Save the plot as a PNG file in the current working directory</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;county_graph.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1">#                           OPTIMIZATION MODEL</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1"># formulate and solve a mathematical optimization model</span>
+<span class="k">def</span> <span class="nf">optimize_partition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+
+    <span class="c1"># Variables</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">)</span>
+
+    <span class="c1"># Objective function</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span>
+
+    <span class="c1"># Constraints</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">L</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">U</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+
+    <span class="c1"># Optimize</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">MIPGap</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+    <span class="c1"># Print result</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The moment of inertia objective is&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objval</span><span class="p">)</span>
+
+    <span class="c1"># Extract assignment results from the optimization model</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>
+    
+    <span class="c1"># Assign nodes to districts based on decision variable values</span>
+    <span class="n">districts</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">centers</span><span class="p">]</span>
+
+    <span class="c1"># Retrieve county names for each district</span>
+    <span class="n">district_counties</span> <span class="o">=</span> <span class="p">[[</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;NAME20&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">districts</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+
+    <span class="c1"># Calculate total population for each district</span>
+    <span class="n">district_populations</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;TOTPOP&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">districts</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+    
+    <span class="c1"># Print the assignment results</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;District&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot;has population&quot;</span><span class="p">,</span> <span class="n">district_populations</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="s2">&quot;and contains counties&quot;</span><span class="p">,</span> <span class="n">district_counties</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">districts</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1">#                    PLOT THE MAP WITH OPTIMIZED RESULTS</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1"># plot the optimized redistricting map using the results</span>
+<span class="k">def</span> <span class="nf">plot_optimized_redistricting_map</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">districts</span><span class="p">,</span> <span class="n">geo_df</span><span class="p">,</span> <span class="n">geo_id_column</span><span class="p">,</span> <span class="n">assignment_column</span><span class="p">):</span>
+    
+    <span class="c1"># Create a mapping of GEOID20 to node indices in the graph</span>
+    <span class="n">node_with_this_geoid</span> <span class="o">=</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;GEOID20&#39;</span><span class="p">]:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">}</span>
+    
+    <span class="c1"># Initialize an assignment list with -1, representing unassigned nodes</span>
+    <span class="n">assignment</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">())]</span>
+
+    <span class="c1"># Assign each node to its corresponding district based on the optimization results</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">district</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">districts</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">district</span><span class="p">:</span>
+            <span class="n">assignment</span><span class="p">[</span><span class="n">node_with_this_geoid</span><span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;GEOID20&#39;</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">j</span>
+
+    <span class="c1"># Add the assignment column to the GeoDataFrame</span>
+    <span class="n">geo_df</span><span class="p">[</span><span class="n">assignment_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">assignment</span>
+
+    <span class="c1"># Plot the optimized redistricting map using GeoDataFrame</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">geo_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">assignment_column</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Optimized Redistricting Map&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">})</span>
+    
+    <span class="c1"># Save the plot as a PNG file in the current working directory</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;final_district_map.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1">#              APPLY THE MODEL CREATED ON A SPECIFIC CASE STUDY</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1"># Apply the functions to a specific state</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    
+    <span class="c1"># Path to the shapefile containing the geographical information of counties</span>
+    <span class="n">shapefile_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.shp&quot;</span>
+    
+    <span class="c1"># Read the shapefile into a GeoDataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path</span><span class="p">)</span>
+    
+    <span class="c1"># Path to the JSON file containing the county graph data</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.json&quot;</span>
+    
+    <span class="c1"># Create a graph representation from the JSON file</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">read_county_graph</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="c1"># Print information about each county in the graph</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">print_county_info</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        
+    <span class="c1"># Set the deviation and the number of desired districts</span>
+    <span class="n">deviation</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>       <span class="c1"># number of districts</span>
+    
+    <span class="c1"># Calculate population bounds for each district</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">calculate_population_bounds</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">deviation</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">, U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s2">, and k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a dictionary of distances between each pair of nodes </span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">create_distance_dict</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Visualize the original graph</span>
+    <span class="n">visualize_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Optimize the partitioning of counties into districts</span>
+    <span class="n">districts</span> <span class="o">=</span> <span class="n">optimize_partition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="c1"># Print the number of nodes in the graph and the DataFrame</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of nodes in G:&quot;</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of nodes in DataFrame (df):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="c1"># Plot the optimized redistricting map</span>
+    <span class="n">plot_optimized_redistricting_map</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">districts</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;GEOID20&#39;</span><span class="p">,</span> <span class="s1">&#39;assignment&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#Import necessary libraries</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">Python</span>\<span class="n">Python311</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">geopandas</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">geopandas._config</span> <span class="kn">import</span> <span class="n">options</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">geopandas.geoseries</span> <span class="kn">import</span> <span class="n">GeoSeries</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">geopandas.geodataframe</span> <span class="kn">import</span> <span class="n">GeoDataFrame</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">Python</span>\<span class="n">Python311</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">geopandas</span>\<span class="n">_config</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">109</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="kn">import</span> <span class="nn">geopandas._compat</span> <span class="k">as</span> <span class="nn">compat</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">compat</span><span class="o">.</span><span class="n">set_use_pygeos</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="n">use_pygeos</span> <span class="o">=</span> <span class="n">Option</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="n">key</span><span class="o">=</span><span class="s2">&quot;use_pygeos&quot;</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>     <span class="n">default_value</span><span class="o">=</span><span class="n">_default_use_pygeos</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="n">doc</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="s2">&quot;Whether to use PyGEOS to speed up spatial operations. The default is True &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="s2">&quot;if PyGEOS is installed, and follows the USE_PYGEOS environment variable &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="s2">&quot;if set.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="n">validator</span><span class="o">=</span><span class="n">_validate_bool</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="n">callback</span><span class="o">=</span><span class="n">_callback_use_pygeos</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="k">def</span> <span class="nf">_validate_io_engine</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python311\site-packages\geopandas\_config.py:95,</span> in <span class="ni">_default_use_pygeos</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">def</span> <span class="nf">_default_use_pygeos</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="kn">import</span> <span class="nn">geopandas._compat</span> <span class="k">as</span> <span class="nn">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="k">return</span> <span class="n">compat</span><span class="o">.</span><span class="n">USE_PYGEOS</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">Python</span>\<span class="n">Python311</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">geopandas</span>\<span class="n">_compat</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">shapely</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">shapely.geos</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="type-2-modeling-with-pyscipopt">
+<h1>Type 2: Modeling with PySCIPopt<a class="headerlink" href="#type-2-modeling-with-pyscipopt" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pyscipopt</span> <span class="k">as</span> <span class="nn">scip</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">gerrychain</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+<span class="c1"># -----------------------------------------------------------------------------------------</span>
+<span class="c1">#                           OPTIMIZATION MODEL</span>
+<span class="c1"># -----------------------------------------------------------------------------------------</span>
+<span class="c1"># formulate and solve a mathematical optimization model</span>
+<span class="k">def</span> <span class="nf">optimize_partition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">scip</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+
+    <span class="c1"># Variables</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;X_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Objective function</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span>
+        <span class="n">scip</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">),</span>
+        <span class="s2">&quot;minimize&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Constraints</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">addCons</span><span class="p">(</span><span class="n">scip</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addCons</span><span class="p">(</span><span class="n">scip</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">addCons</span><span class="p">(</span><span class="n">scip</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">L</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">addCons</span><span class="p">(</span><span class="n">scip</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;TOTPOP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">U</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+
+    <span class="c1"># Additional constraint to fix the issue</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">addCons</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+
+    <span class="c1"># Optimize</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+    <span class="c1"># Print result</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The moment of inertia objective is&quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">getObjVal</span><span class="p">())</span>
+
+    <span class="c1"># Extract assignment results from the optimization model</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">getVal</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>
+
+    <span class="c1"># Assign nodes to districts based on decision variable values</span>
+    <span class="n">districts</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">getVal</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">centers</span><span class="p">]</span>
+
+    <span class="c1"># Retrieve county names for each district</span>
+    <span class="n">district_counties</span> <span class="o">=</span> <span class="p">[[</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;NAME20&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">districts</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+
+    <span class="c1"># Calculate total population for each district</span>
+    <span class="n">district_populations</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;TOTPOP&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">districts</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+
+    <span class="c1"># Print the assignment results</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;District&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot;has population&quot;</span><span class="p">,</span> <span class="n">district_populations</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="s2">&quot;and contains counties&quot;</span><span class="p">,</span> <span class="n">district_counties</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">districts</span>
+
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1">#              APPLY THE MODEL CREATED ON A SPECIFIC CASE STUDY</span>
+<span class="c1">#-----------------------------------------------------------------------------------------</span>
+<span class="c1"># Apply the functions to a specific state</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    
+    <span class="c1"># Path to the shapefile containing the geographical information of counties</span>
+    <span class="n">shapefile_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.shp&quot;</span>
+    
+    <span class="c1"># Read the shapefile into a GeoDataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path</span><span class="p">)</span>
+    
+    <span class="c1"># Path to the JSON file containing the county graph data</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.json&quot;</span>
+    
+    <span class="c1"># Create a graph representation from the JSON file</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">read_county_graph</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="c1"># Print information about each county in the graph</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">print_county_info</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        
+    <span class="c1"># Set the user-defined inputs</span>
+    <span class="n">deviation</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>       <span class="c1"># number of districts</span>
+    
+    <span class="c1"># Calculate population bounds for each district</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">calculate_population_bounds</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">deviation</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">, U = </span><span class="si">{</span><span class="n">U</span><span class="si">}</span><span class="s2">, and k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a dictionary of distances between each pair of nodes </span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">create_distance_dict</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Visualize the original graph</span>
+    <span class="n">visualize_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Optimize the partitioning of counties into districts</span>
+    <span class="n">districts</span> <span class="o">=</span> <span class="n">optimize_partition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="c1"># Print the number of nodes in the graph and the DataFrame</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of nodes in G:&quot;</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of nodes in DataFrame (df):&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+    <span class="c1"># Plot the optimized redistricting map</span>
+    <span class="n">plot_optimized_redistricting_map</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">districts</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="s1">&#39;GEOID20&#39;</span><span class="p">,</span> <span class="s1">&#39;assignment&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node 0 is Wyoming County, which has population 21382 and is centered at (-081.5490317, +37.6036601)
+Node 1 is Braxton County, which has population 12447 and is centered at (-080.7316597, +38.6993304)
+Node 2 is Roane County, which has population 14028 and is centered at (-081.3544939, +38.7429497)
+Node 3 is Grant County, which has population 10976 and is centered at (-079.1950640, +39.1059882)
+Node 4 is Monroe County, which has population 12376 and is centered at (-080.5503295, +37.5540622)
+Node 5 is Doddridge County, which has population 7808 and is centered at (-080.7114979, +39.2643068)
+Node 6 is Wirt County, which has population 5194 and is centered at (-081.3829749, +39.0200337)
+Node 7 is Tyler County, which has population 8313 and is centered at (-080.8772193, +39.4656340)
+Node 8 is Greenbrier County, which has population 32977 and is centered at (-080.4505897, +37.9244177)
+Node 9 is Ritchie County, which has population 8444 and is centered at (-081.0663167, +39.1771118)
+Node 10 is Randolph County, which has population 27932 and is centered at (-079.8677881, +38.7810953)
+Node 11 is Marion County, which has population 56205 and is centered at (-080.2434018, +39.5058387)
+Node 12 is Pendleton County, which has population 6143 and is centered at (-079.3406175, +38.6744501)
+Node 13 is Summers County, which has population 11959 and is centered at (-080.8563250, +37.6559986)
+Node 14 is Berkeley County, which has population 122076 and is centered at (-078.0377535, +39.4479382)
+Node 15 is Upshur County, which has population 23816 and is centered at (-080.2316057, +38.9025302)
+Node 16 is Taylor County, which has population 16705 and is centered at (-080.0465539, +39.3324778)
+Node 17 is Raleigh County, which has population 74591 and is centered at (-081.2646719, +37.7624694)
+Node 18 is Nicholas County, which has population 24604 and is centered at (-080.7975148, +38.2914318)
+Node 19 is Mason County, which has population 25453 and is centered at (-082.0290067, +38.7709140)
+Node 20 is Gilmer County, which has population 7408 and is centered at (-080.8494132, +38.9158671)
+Node 21 is Brooke County, which has population 22559 and is centered at (-080.5786910, +40.2726454)
+Node 22 is Calhoun County, which has population 6229 and is centered at (-081.1154775, +38.8441591)
+Node 23 is Lincoln County, which has population 20463 and is centered at (-082.0776231, +38.1717696)
+Node 24 is Ohio County, which has population 42425 and is centered at (-080.6199004, +40.1003230)
+Node 25 is Morgan County, which has population 17063 and is centered at (-078.2565175, +39.5573454)
+Node 26 is Kanawha County, which has population 180745 and is centered at (-081.5235156, +38.3280675)
+Node 27 is Lewis County, which has population 17033 and is centered at (-080.4954773, +38.9888773)
+Node 28 is Mingo County, which has population 23568 and is centered at (-082.1589891, +37.7211608)
+Node 29 is Wayne County, which has population 38982 and is centered at (-082.4226659, +38.1436416)
+Node 30 is Pocahontas County, which has population 7869 and is centered at (-080.0101207, +38.3326060)
+Node 31 is Putnam County, which has population 57440 and is centered at (-081.9061090, +38.5105179)
+Node 32 is Wetzel County, which has population 14442 and is centered at (-080.6353994, +39.5981800)
+Node 33 is Boone County, which has population 21809 and is centered at (-081.7135382, +38.0228143)
+Node 34 is Cabell County, which has population 94350 and is centered at (-082.2433966, +38.4195778)
+Node 35 is Marshall County, which has population 30591 and is centered at (-080.6717944, +39.8544259)
+Node 36 is Jackson County, which has population 27791 and is centered at (-081.6777168, +38.8342339)
+Node 37 is Monongalia County, which has population 105822 and is centered at (-080.0590736, +39.6336448)
+Node 38 is Mineral County, which has population 26938 and is centered at (-078.9566899, +39.4047806)
+Node 39 is Hancock County, which has population 29095 and is centered at (-080.5701643, +40.5169584)
+Node 40 is Preston County, which has population 34216 and is centered at (-079.6688649, +39.4690296)
+Node 41 is Hardy County, which has population 14299 and is centered at (-078.8417292, +39.0113612)
+Node 42 is Wood County, which has population 84296 and is centered at (-081.5162340, +39.2116023)
+Node 43 is Webster County, which has population 8378 and is centered at (-080.4490515, +38.4834590)
+Node 44 is Hampshire County, which has population 23093 and is centered at (-078.6119886, +39.3121395)
+Node 45 is McDowell County, which has population 19111 and is centered at (-081.6582040, +37.3827604)
+Node 46 is Harrison County, which has population 65921 and is centered at (-080.3864982, +39.2791820)
+Node 47 is Barbour County, which has population 15465 and is centered at (-079.9969466, +39.1397248)
+Node 48 is Tucker County, which has population 6762 and is centered at (-079.5599678, +39.1111751)
+Node 49 is Clay County, which has population 8051 and is centered at (-081.0818663, +38.4598259)
+Node 50 is Logan County, which has population 32567 and is centered at (-081.9408530, +37.8305905)
+Node 51 is Pleasants County, which has population 7653 and is centered at (-081.1611724, +39.3681331)
+Node 52 is Fayette County, which has population 40488 and is centered at (-081.0860508, +38.0309328)
+Node 53 is Jefferson County, which has population 57701 and is centered at (-077.8632200, +39.3073985)
+Node 54 is Mercer County, which has population 59664 and is centered at (-081.1064560, +37.4034477)
+Using L = 446187, U = 450671, and k = 4
+</pre></div>
+</div>
+<img alt="_images/e69c01042e6cb1413b8011313ab58aa9ab1c7c1411a9cb65efbe7d487ecf2cce.png" src="_images/e69c01042e6cb1413b8011313ab58aa9ab1c7c1411a9cb65efbe7d487ecf2cce.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The moment of inertia objective is 2851722647.233473
+District 0 has population 448156 and contains counties [&#39;Wyoming&#39;, &#39;Braxton&#39;, &#39;Monroe&#39;, &#39;Greenbrier&#39;, &#39;Ritchie&#39;, &#39;Summers&#39;, &#39;Raleigh&#39;, &#39;Nicholas&#39;, &#39;Gilmer&#39;, &#39;Lincoln&#39;, &#39;Mingo&#39;, &#39;Pocahontas&#39;, &#39;Boone&#39;, &#39;Webster&#39;, &#39;McDowell&#39;, &#39;Clay&#39;, &#39;Logan&#39;, &#39;Fayette&#39;, &#39;Mercer&#39;]
+District 1 has population 450212 and contains counties [&#39;Roane&#39;, &#39;Wirt&#39;, &#39;Mason&#39;, &#39;Calhoun&#39;, &#39;Kanawha&#39;, &#39;Wayne&#39;, &#39;Putnam&#39;, &#39;Cabell&#39;, &#39;Jackson&#39;]
+District 2 has population 449089 and contains counties [&#39;Doddridge&#39;, &#39;Tyler&#39;, &#39;Marion&#39;, &#39;Upshur&#39;, &#39;Taylor&#39;, &#39;Brooke&#39;, &#39;Ohio&#39;, &#39;Lewis&#39;, &#39;Wetzel&#39;, &#39;Marshall&#39;, &#39;Hancock&#39;, &#39;Wood&#39;, &#39;Harrison&#39;, &#39;Barbour&#39;, &#39;Tucker&#39;, &#39;Pleasants&#39;]
+District 3 has population 446259 and contains counties [&#39;Grant&#39;, &#39;Randolph&#39;, &#39;Pendleton&#39;, &#39;Berkeley&#39;, &#39;Morgan&#39;, &#39;Monongalia&#39;, &#39;Mineral&#39;, &#39;Preston&#39;, &#39;Hardy&#39;, &#39;Hampshire&#39;, &#39;Jefferson&#39;]
+Number of nodes in G: 55
+Number of nodes in DataFrame (df): 55
+</pre></div>
+</div>
+<img alt="_images/711596ab4205622cab4e318ff146ddad537f36aeb1b4222240de2364ce98bfda.png" src="_images/711596ab4205622cab4e318ff146ddad537f36aeb1b4222240de2364ce98bfda.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">REDISTRICTING - STATE OF WEST VIRGINIA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-1-modeling-with-gurobipy">Type 1: Modeling with GUROBIPY</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#type-2-modeling-with-pyscipopt">Type 2: Modeling with PySCIPopt</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,263 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+#Import necessary libraries
+import geopandas as gpd
+import networkx as nx
+import gurobipy as gp
+from gurobipy import GRB
+import matplotlib.pyplot as plt
+import math
+from geopy.distance import geodesic
+
+from gerrychain import Graph
+
+#-----------------------------------------------------------------------------------------
+#                      READ THE DATA AND DISPLAY THE INFO
+#-----------------------------------------------------------------------------------------
+# read a county graph from a JSON file.
+def read_county_graph(filename):
+    return Graph.from_json(filename)
+
+# Print information about counties (name, population, location)
+def print_county_info(G, node):
+    name = G.nodes[node]['NAME20']
+    population = G.nodes[node]['P0010001']
+    G.nodes[node]['TOTPOP'] = population
+    G.nodes[node]['C_X'] = G.nodes[node]['INTPTLON20']
+    G.nodes[node]['C_Y'] = G.nodes[node]['INTPTLAT20']
+    print(f"Node {node} is {name} County, which has population {population} and is centered at ({G.nodes[node]['C_X']}, {G.nodes[node]['C_Y']})")
+
+# calculate population bounds
+# (based on a deviation parameter, total population, and the number of districts).
+def calculate_population_bounds(G, deviation, k):
+    total_population = sum(G.nodes[node]['TOTPOP'] for node in G.nodes)
+    L = math.ceil((1 - deviation / 2) * total_population / k)
+    U = math.floor((1 + deviation / 2) * total_population / k)
+    return L, U
+
+#create a dictionary of distances between each pair of nodes 
+# based on their geographical locations.
+def create_distance_dict(G):
+    dist = {(i, j): 0 for i in G.nodes for j in G.nodes}
+    for i in G.nodes:
+        for j in G.nodes:
+            loc_i = (G.nodes[i]['C_Y'], G.nodes[i]['C_X'])
+            loc_j = (G.nodes[j]['C_Y'], G.nodes[j]['C_X'])
+            dist[i, j] = geodesic(loc_i, loc_j).miles
+    return dist
+
+# Visualize the graph using networkx and matplotlib with enhanced styling
+def visualize_graph(G):
+    pos = {node: (float(G.nodes[node]['C_X']), float(G.nodes[node]['C_Y'])) for node in G.nodes}
+    
+    # Set node colors based on degree (you can customize this)
+    node_colors = [G.degree(node) for node in G.nodes]
+    
+    # Set node size based on total population (you can customize this as well)
+    node_size = [G.nodes[node]['TOTPOP'] / 100 for node in G.nodes]
+    
+    # Draw nodes with enhanced styling
+    nx.draw(G, pos, with_labels=True, node_size=node_size, node_color=node_colors, cmap=plt.cm.Blues, font_size=8, font_color="black", font_weight="bold", alpha=0.8)
+
+    # Draw edges with reduced opacity
+    nx.draw_networkx_edges(G, pos, alpha=0.4)
+
+    # Add a colorbar for node colors
+    sm = plt.cm.ScalarMappable(cmap=plt.cm.Blues, norm=plt.Normalize(vmin=min(node_colors), vmax=max(node_colors)))
+    sm.set_array([])
+    cbar = plt.colorbar(sm, orientation='vertical', pad=0.02, ax=plt.gca()) 
+    cbar.set_label('Node Degree')
+
+    plt.title('County Graph Visualization')
+    
+    # Save the plot as a PNG file in the current working directory
+    plt.savefig('county_graph.png')
+    plt.show()
+
+#-----------------------------------------------------------------------------------------
+#                           OPTIMIZATION MODEL
+#-----------------------------------------------------------------------------------------
+# formulate and solve a mathematical optimization model
+def optimize_partition(G, L, U, dist, k):
+    m = gp.Model()
+
+    # Variables
+    X = m.addVars(G.nodes, G.nodes, vtype=GRB.BINARY)
+
+    # Objective function
+    m.setObjective(gp.quicksum(dist[i, j] * dist[i, j] * G.nodes[i]['TOTPOP'] * X[i, j] for i in G.nodes for j in G.nodes), GRB.MINIMIZE)
+
+    # Constraints
+    m.addConstrs(gp.quicksum(X[i, j] for j in G.nodes) == 1 for i in G.nodes)
+    m.addConstr(gp.quicksum(X[j, j] for j in G.nodes) == k)
+    m.addConstrs(gp.quicksum(G.nodes[i]['TOTPOP'] * X[i, j] for i in G.nodes) >= L * X[j, j] for j in G.nodes)
+    m.addConstrs(gp.quicksum(G.nodes[i]['TOTPOP'] * X[i, j] for i in G.nodes) <= U * X[j, j] for j in G.nodes)
+    m.addConstrs(X[i, j] <= X[j, j] for i in G.nodes for j in G.nodes)
+
+    # Optimize
+    m.Params.MIPGap = 0.0
+    m.optimize()
+
+    # Print result
+    print("The moment of inertia objective is", m.objval)
+
+    # Extract assignment results from the optimization model
+    centers = [j for j in G.nodes if X[j, j].x > 0.5]
+    
+    # Assign nodes to districts based on decision variable values
+    districts = [[i for i in G.nodes if X[i, j].x > 0.5] for j in centers]
+
+    # Retrieve county names for each district
+    district_counties = [[G.nodes[i]["NAME20"] for i in districts[j]] for j in range(k)]
+
+    # Calculate total population for each district
+    district_populations = [sum(G.nodes[i]["TOTPOP"] for i in districts[j]) for j in range(k)]
+    
+    # Print the assignment results
+    for j in range(k):
+        print("District", j, "has population", district_populations[j], "and contains counties", district_counties[j])
+
+    return districts
+#-----------------------------------------------------------------------------------------
+#                    PLOT THE MAP WITH OPTIMIZED RESULTS
+#-----------------------------------------------------------------------------------------
+# plot the optimized redistricting map using the results
+def plot_optimized_redistricting_map(G, districts, geo_df, geo_id_column, assignment_column):
+    
+    # Create a mapping of GEOID20 to node indices in the graph
+    node_with_this_geoid = {G.nodes[i]['GEOID20']: i for i in G.nodes}
+    
+    # Initialize an assignment list with -1, representing unassigned nodes
+    assignment = [-1 for _ in range(G.number_of_nodes())]
+
+    # Assign each node to its corresponding district based on the optimization results
+    for j, district in enumerate(districts):
+        for i in district:
+            assignment[node_with_this_geoid[G.nodes[i]['GEOID20']]] = j
+
+    # Add the assignment column to the GeoDataFrame
+    geo_df[assignment_column] = assignment
+
+    # Plot the optimized redistricting map using GeoDataFrame
+    fig, ax = plt.subplots(figsize=(12, 8))
+    geo_df.plot(column=assignment_column, cmap='tab10', linewidth=0.8, ax=ax, edgecolor='0.8', legend=True, categorical=True)
+    ax.set_title('Optimized Redistricting Map', fontdict={'fontsize': '15', 'fontweight': '3'})
+    
+    # Save the plot as a PNG file in the current working directory
+    plt.savefig('final_district_map.png')
+    plt.show()
+
+#-----------------------------------------------------------------------------------------
+#              APPLY THE MODEL CREATED ON A SPECIFIC CASE STUDY
+#-----------------------------------------------------------------------------------------
+# Apply the functions to a specific state
+def main():
+    
+    # Path to the shapefile containing the geographical information of counties
+    shapefile_path = r"C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.shp"
+    
+    # Read the shapefile into a GeoDataFrame
+    df = gpd.read_file(shapefile_path)
+    
+    # Path to the JSON file containing the county graph data
+    filename = r"C:\Users\Moise Baraka\OR-scrypts\West Virginia\WV_county.json"
+    
+    # Create a graph representation from the JSON file
+    G = read_county_graph(filename)
+    
+    # Print information about each county in the graph
+    for node in G.nodes:
+        print_county_info(G, node)
+        
+    # Set the deviation and the number of desired districts
+    deviation = 0.01
+    k = 2       # number of districts
+    
+    # Calculate population bounds for each district
+    L, U = calculate_population_bounds(G, deviation, k)
+    print(f"Using L = {L}, U = {U}, and k = {k}")
+
+    # Create a dictionary of distances between each pair of nodes 
+    dist = create_distance_dict(G)
+
+    # Visualize the original graph
+    visualize_graph(G)
+
+    # Optimize the partitioning of counties into districts
+    districts = optimize_partition(G, L, U, dist, k)
+
+    # Print the number of nodes in the graph and the DataFrame
+    print("Number of nodes in G:", G.number_of_nodes())
+    print("Number of nodes in DataFrame (df):", len(df))
+
+    # Plot the optimized redistricting map
+    plot_optimized_redistricting_map(G, districts, df, 'GEOID20', 'assignment')
+
+if __name__ == "__main__":
+    main()
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[2], line 2[0m
+[0;32m      1[0m [38;5;66;03m#Import necessary libraries[39;00m
+[1;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
+[0;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mnetworkx[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnx[39;00m
+[0;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mgurobipy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgp[39;00m
+
+File [1;32m~\AppData\Roaming\Python\Python311\site-packages\geopandas\__init__.py:1[0m
+[1;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgeopandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_config[39;00m [38;5;28;01mimport[39;00m options
+[0;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgeopandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeoseries[39;00m [38;5;28;01mimport[39;00m GeoSeries
+[0;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgeopandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeodataframe[39;00m [38;5;28;01mimport[39;00m GeoDataFrame
+
+File [1;32m~\AppData\Roaming\Python\Python311\site-packages\geopandas\_config.py:109[0m
+[0;32m    102[0m     [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_compat[39;00m [38;5;28;01mas[39;00m [38;5;21;01mcompat[39;00m
+[0;32m    104[0m     compat[38;5;241m.[39mset_use_pygeos(value)
+[0;32m    107[0m use_pygeos [38;5;241m=[39m Option(
+[0;32m    108[0m     key[38;5;241m=[39m[38;5;124m"[39m[38;5;124muse_pygeos[39m[38;5;124m"[39m,
+[1;32m--> 109[0m     default_value[38;5;241m=[39m[43m_default_use_pygeos[49m[43m([49m[43m)[49m,
+[0;32m    110[0m     doc[38;5;241m=[39m(
+[0;32m    111[0m         [38;5;124m"[39m[38;5;124mWhether to use PyGEOS to speed up spatial operations. The default is True [39m[38;5;124m"[39m
+[0;32m    112[0m         [38;5;124m"[39m[38;5;124mif PyGEOS is installed, and follows the USE_PYGEOS environment variable [39m[38;5;124m"[39m
+[0;32m    113[0m         [38;5;124m"[39m[38;5;124mif set.[39m[38;5;124m"[39m
+[0;32m    114[0m     ),
+[0;32m    115[0m     validator[38;5;241m=[39m_validate_bool,
+[0;32m    116[0m     callback[38;5;241m=[39m_callback_use_pygeos,
+[0;32m    117[0m )
+[0;32m    120[0m [38;5;28;01mdef[39;00m [38;5;21m_validate_io_engine[39m(value):
+[0;32m    121[0m     [38;5;28;01mif[39;00m value [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+File [1;32m~\AppData\Roaming\Python\Python311\site-packages\geopandas\_config.py:95[0m, in [0;36m_default_use_pygeos[1;34m()[0m
+[0;32m     94[0m [38;5;28;01mdef[39;00m [38;5;21m_default_use_pygeos[39m():
+[1;32m---> 95[0m     [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_compat[39;00m [38;5;28;01mas[39;00m [38;5;21;01mcompat[39;00m
+[0;32m     97[0m     [38;5;28;01mreturn[39;00m compat[38;5;241m.[39mUSE_PYGEOS
+
+File [1;32m~\AppData\Roaming\Python\Python311\site-packages\geopandas\_compat.py:8[0m
+[0;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mwarnings[39;00m
+[0;32m      7[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m----> 8[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m      9[0m [38;5;28;01mimport[39;00m [38;5;21;01mshapely[39;00m
+[0;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mshapely[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeos[39;00m
+
+[1;31mModuleNotFoundError[0m: No module named 'pandas'
+
